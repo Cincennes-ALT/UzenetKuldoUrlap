@@ -1,6 +1,8 @@
 framework:
     validation:
         email_validation_mode: html5
+    form:
+        legacy_error_messages: false
 
         # Enables validator auto-mapping support.
         # For instance, basic validation constraints will be inferred from Doctrine's metadata.
@@ -11,3 +13,15 @@ when@test:
     framework:
         validation:
             not_compromised_password: false
+
+# hiba miatt kivéve
+#Kapcsolat validáció
+# App\Entity\Kapcsolat:
+#     propeties:
+#         nev:
+#             - NotBlank: ~
+#         email:
+#             - NotBlank: ~
+#             - Type: \Email
+#         uzenet:
+#             - NotBlank: ~
