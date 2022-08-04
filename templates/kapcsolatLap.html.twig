@@ -2,6 +2,10 @@
 {% block body %}
 
 <h1>Kapcsolat felvétel:</h1>
-{{ form(urlap)}}
-
+{{form_start(urlap)}}
+    {{form_errors(urlap)}}
+    {{form_row(urlap.Nev)}}
+    {{form_row(urlap.Email)}}
+    {{form_row(urlap.Bekuldes)}}
+{{form_end(urlap)}}
 {% endblock %}
