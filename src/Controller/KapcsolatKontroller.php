@@ -13,11 +13,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class KapcsolatKontroller extends AbstractController
 {
     #[Route("/urlap", name: "urlap")]
-    public function new(Request $request): Response
+    public function new(Request $request, ManagerRegistry $doctrine): Response
     {
         $kapcs = new Kapcsolat();
         $kapcs->setNev("");
@@ -40,6 +41,15 @@ class KapcsolatKontroller extends AbstractController
             $kapcs = $urlap->getData();
 
             //adatbázis mentés
+            $menedzser = $doctrine->getManager();
+            $rekord = new KapcsolatEntity();
+            $rekord->setNev($urlap->getData()["nev"]);
+            $rekord->setEmail($urlap->getData()["email"]);
+            $rekord->setUzenet($urlap->getData()["uzenet"]);
+            //előkészítés
+            $menedzser->persist($rekord);
+            //mentés
+            $menedzser->flush();
 
             return $this->redirectToRoute("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
         }
@@ -48,4 +58,8 @@ class KapcsolatKontroller extends AbstractController
             'urlap' => $urlap,
         ]);
     }
+    // public function rekordMentes(ManagerRegistry $doctrine): Response
+    // {
+    //     $rekord = $doctrine->getManager();
+    // }
 }
