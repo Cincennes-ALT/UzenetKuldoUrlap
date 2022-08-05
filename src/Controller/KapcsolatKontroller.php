@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Kapcsolat;
+use App\Entity\KapcsolatEntity; //új entitiáns használata
 use App\Form\KapcsolatControllerFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
