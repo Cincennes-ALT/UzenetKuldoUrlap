@@ -25,14 +25,6 @@ class KapcsolatKontroller extends AbstractController
         $kapcs->setEmail("");
         $kapcs->setUzenet("");
 
-        //átmenetileg kivéve
-        // $urlap = $this->createFormBuilder($kapcs)
-        //     ->add("Nev", TextType::class, ['label' => 'Név'])
-        //     ->add("Email", EmailType::class, ['label' => 'Email cím'])
-        //     ->add("Uzenet", TextareaType::class, ['label' => 'Üzenet helye...'])
-        //     ->add('Bekuldes', SubmitType::class, ['labe' => 'Beküldés'])
-        //     ->getForm();
-
         $urlap = $this->createForm(KapcsolatControllerFormType::class, $kapcs);
 
         //feldolgozás
@@ -42,15 +34,6 @@ class KapcsolatKontroller extends AbstractController
             //adatbázis mentés
             $menedzser = $doctrine->getManager();
             $menedzser->persist($kapcs);
-            //kivéve
-            //$rekord = new KapcsolatEntity();
-            //feltoltés értékkel
-            //$rekord->setNev($nevFrom);
-            //$rekord->setEmail($emailForm);
-            //$rekord->setUzenet($uzenetForm);
-            //előkészítés
-            //$menedzser->persist($rekord);
-            //mentés
             $menedzser->flush();
 
             return $this->redirectToRoute("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
@@ -60,8 +43,4 @@ class KapcsolatKontroller extends AbstractController
             'urlap' => $urlap,
         ]);
     }
-    // public function rekordMentes(ManagerRegistry $doctrine): Response
-    // {
-    //     $rekord = $doctrine->getManager();
-    // }
 }
