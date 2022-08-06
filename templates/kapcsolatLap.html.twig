@@ -1,11 +1,15 @@
 {% form_theme urlap 'bootstrap_5_layout.html.twig' %}
 {% block body %}
 
+<div id=test>
 <h1>Kapcsolat felvétel:</h1>
+<div id="urlap">
 {{form_start(urlap)}}
     {{form_errors(urlap)}}
     {{form_row(urlap.Nev)}}
     {{form_row(urlap.Email)}}
     {{form_row(urlap.Bekuldes)}}
 {{form_end(urlap)}}
+</div>
+</div>
 {% endblock %}
