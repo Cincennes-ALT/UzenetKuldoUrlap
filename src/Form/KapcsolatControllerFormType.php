@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Kapcsolat;
+use App\Entity\KapcsolatEntity;
 // hiba? use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,7 +28,7 @@ class KapcsolatControllerFormType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
-            'data_class' => Kapcsolat::class,
+            'data_class' => KapcsolatEntity::class,
         ]);
     }
 }

@@ -20,7 +20,7 @@ class KapcsolatKontroller extends AbstractController
     #[Route("/urlap", name: "urlap")]
     public function new(Request $request, ManagerRegistry $doctrine): Response
     {
-        $kapcs = new Kapcsolat();
+        $kapcs = new KapcsolatEntity();
         $kapcs->setNev("");
         $kapcs->setEmail("");
         $kapcs->setUzenet("");
@@ -39,15 +39,17 @@ class KapcsolatKontroller extends AbstractController
         $urlap->handleRequest($request);
         if ($urlap->isSubmitted() && $urlap->isValid()) {
             $kapcs = $urlap->getData();
-
             //adatbázis mentés
             $menedzser = $doctrine->getManager();
-            $rekord = new KapcsolatEntity();
-            $rekord->setNev($urlap->getData()["nev"]);
-            $rekord->setEmail($urlap->getData()["email"]);
-            $rekord->setUzenet($urlap->getData()["uzenet"]);
+            $menedzser->persist($kapcs);
+            //kivéve
+            //$rekord = new KapcsolatEntity();
+            //feltoltés értékkel
+            //$rekord->setNev($nevFrom);
+            //$rekord->setEmail($emailForm);
+            //$rekord->setUzenet($uzenetForm);
             //előkészítés
-            $menedzser->persist($rekord);
+            //$menedzser->persist($rekord);
             //mentés
             $menedzser->flush();
 
