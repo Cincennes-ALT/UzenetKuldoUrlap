@@ -9,15 +9,15 @@
 {% endblock %}
 {% block body %}
 
-<div id=test>
-    <h1>Kapcsolat felvétel:</h1>
+<div id=test margin="auto">
+    <h1>Kapcsolatfelvétel:</h1>
     <div id="urlap">
         {{form_start(urlap)}}
         {{form_errors(urlap)}}
-        {{form_row(urlap.Nev)}}
-        {{form_row(urlap.Email)}}
-        {{form_row(urlap.Uzenet)}}
-        {{form_row(urlap.Kuldes)}}
+        {{form_row(urlap.Nev, {"label":"Név"})}}
+        {{form_row(urlap.Email, {"label": "Email"})}}
+        {{form_row(urlap.Uzenet, {"label": "Üzenet"})}}
+        {{form_row(urlap.Kuldes, {"label": "Küldés"})}}
         {{form_end(urlap)}}
     </div>
 </div>
