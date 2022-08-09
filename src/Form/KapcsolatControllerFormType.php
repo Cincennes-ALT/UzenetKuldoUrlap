@@ -21,7 +21,7 @@ class KapcsolatControllerFormType extends AbstractType
             ->add('Nev', TextType::class)
             ->add('Email', EmailType::class)
             ->add('Uzenet', TextareaType::class)
-            ->add('Bekuldes', SubmitType::class);;
+            ->add('Kuldes', SubmitType::class);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
