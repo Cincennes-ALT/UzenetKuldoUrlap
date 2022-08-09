@@ -2,9 +2,14 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 use App\Repository\KapcsolatEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Mime\Message;
 
 #[ORM\Entity(repositoryClass: KapcsolatEntityRepository::class)]
 class KapcsolatEntity

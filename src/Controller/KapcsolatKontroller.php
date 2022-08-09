@@ -36,7 +36,8 @@ class KapcsolatKontroller extends AbstractController
             $menedzser->persist($kapcs);
             $menedzser->flush();
 
-            //return $this->redirectToRoute("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
+            //ha minden rendben van
+            return new Response("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
         }
 
         return $this->renderForm('kapcsolatLap.html.twig', [
