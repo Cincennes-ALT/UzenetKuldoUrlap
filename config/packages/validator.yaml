@@ -8,20 +8,23 @@ framework:
         # For instance, basic validation constraints will be inferred from Doctrine's metadata.
         #auto_mapping:
         #    App\Entity\: []
+# App\Entity\KapcsolatEntity:
+# #Kapcsolat validáció
+#      propeties:
+#          nev:
+#              - NotBlank:
+#                 message: "Hiba! Kérjük töltsd ki az összes mezőt!"
+#          email:
+#              - Type: \Email
+#              - NotBlank:
+#                 message: "Hiba! Kérjük töltsd ki az összes mezőt!"
+             
+#          uzenet:
+#             - NotBlank: 
+#                 message: "Hiba! Kérjük töltsd ki az összes mezőt!"
+   
 
 when@test:
     framework:
         validation:
             not_compromised_password: false
-
-# hiba miatt kivéve
-#Kapcsolat validáció
-# App\Entity\Kapcsolat:
-#     propeties:
-#         nev:
-#             - NotBlank: ~
-#         email:
-#             - NotBlank: ~
-#             - Type: \Email
-#         uzenet:
-#             - NotBlank: ~
