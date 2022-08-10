@@ -14,6 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class KapcsolatKontroller extends AbstractController
 {
@@ -27,8 +31,15 @@ class KapcsolatKontroller extends AbstractController
 
         $urlap = $this->createForm(KapcsolatControllerFormType::class, $kapcs);
 
+        $fNev = $urlap->get("Nev")->getData();
+        $fEmail = $urlap->get("Email")->getData();
+        $fUzenet = $urlap->get("Uzenet")->getData();
+
+        // if ($fNev == null || $fEmail == null || $fUzenet == null) {
+        //     $urlap-> addError( new FormError("Hiba! Kérjük töltsd ki az összes mezőt!"));
+        // }
+
         //feldolgozás
-        $urlap->handleRequest($request);
         if ($urlap->isSubmitted() && $urlap->isValid()) {
             $kapcs = $urlap->getData();
             //adatbázis mentés
